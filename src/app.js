@@ -9,10 +9,6 @@ import index from './routes/index';
 import users from './routes/users';
 import p_route from './routes/p_route';
 
-var Project = require('./models/project');
-var Note = require('./models/note');
-var Report = require('./models/report');
-
 var app = express();
 app.use(bodyParser.json());
 

@@ -13,7 +13,7 @@ exports.project_list = function (req, res, next){
 };
 
 //Get details of a particular project.
-exports.project_detail = (req, res, next) => {
+exports.project_detail = function (req, res, next){
 		var project = new Project();
 
 		project.getProjectDetails(req.params.id, function(err, project){
@@ -23,7 +23,7 @@ exports.project_detail = (req, res, next) => {
 };
 
 //Create project.
-exports.project_create = (req, res, next) => {
+exports.project_create = function(req, res, next){
 		var project = new Project(req.body);
 		project.save(function(err){
 			if(err){
@@ -35,7 +35,7 @@ exports.project_create = (req, res, next) => {
 };
 
 //Update a project.
-exports.project_update = (req, res, next) => {
+exports.project_update = function(req, res, next){
 
 	Project.findById(req.params.id, function (err, project) { 
 
@@ -62,7 +62,7 @@ exports.project_update = (req, res, next) => {
 };
 
 //Remove a project.
-exports.project_remove = (req, res, next) => {
+exports.project_remove = function(req, res, next){
 	Project.findById(req.params.id, function (err, project) { 
 		
     // Handle any possible database errors

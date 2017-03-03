@@ -47,7 +47,7 @@ router.delete('/project/:id', project_controller.project_remove);
 //Note Details//
 
 //Get Note list.
-router.get('/notes', note_controller.note_list);
+//router.get('/notes', note_controller.note_list);
 
 //Get Note list for a project.
 router.get('/project/:id/notes', note_controller.note_list);
