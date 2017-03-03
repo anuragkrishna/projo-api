@@ -1,25 +1,28 @@
-#!/usr/bin/env node
+/*jshint esversion: 6 */
+
+/*!/usr/bin/env node */
 
 /**
  * Module dependencies.
  */
 
-var app = require('../src/app');
-var debug = require('debug')('projo:server');
-var http = require('http');
+import  app from '../src/app';
+let debug = require('debug')('projo:server');
+import http from 'http';
+import mongoose from 'mongoose';
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8081');
+let port = normalizePort(process.env.PORT || '8081');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+let server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -29,12 +32,19 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+//DB Connection
+let mongoDBUrl= 'mongodb://anurag:projo@ds145289.mlab.com:45289/projodb';
+mongoose.connect(mongoDBUrl);
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
 /**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  let port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -58,7 +68,7 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  let bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -82,8 +92,8 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+  let addr = server.address();
+  let bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
