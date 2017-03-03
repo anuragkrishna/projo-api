@@ -1,0 +1,36 @@
+Home Page
+/
+
+Profile
+GET  /user/:_id
+
+Projects
+GET  /project
+GET  /project/:_id
+POST /project
+PUT  /project/:_id
+DEL  /project/:_id
+
+Conversation
+GET  /conversation
+GET  /conversation/:_id
+POST /project/:_p_id/conversation
+PUT  /conversation/:_c_id
+DEL  /conversation/:_c_id
+
+Reports
+GET  /report
+GET  /report/:_id
+POST /project/:_p_id/report
+PUT  /report/:_r_id
+DEL  /report/:_r_id
+
+Conversation
+GET  /conversation/:_c_id/post
+GET  /conversation/:_c_id/post/:_s_id
+POST /conversation/:_c_id/post
+PUT  /conversation/:_c_id/post/:_s_id
+DEL  /conversation/:_c_id/post/:_s_id
+
+
+
