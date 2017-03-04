@@ -20,7 +20,6 @@ exports.logIn = function (req, res, next){
 
 		.then((user) => {
 			if(user) {
-				console.log("user found", user);
 				if(bcrypt.compareSync(password, user.password_digest)){
 					const token = jwt.sign({
 						id: user._id,

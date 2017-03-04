@@ -5,14 +5,13 @@ import Project from '../models/project';
 //Get all the projects for a user.
 exports.project_list = function (req, res, next){
 
-		var project = new Project();
 		const owner_id = req.currentUser.id;
 
-		project.find({owner:owner_id})
-		.exec()
-		.then((projects) => {
+		Project.find({owner:owner_id}, (error,projects) =>{
 			if(projects){
 				res.send(projects);
+			}else if(error){
+				res.status(500).send({error:error});
 			}else{
 				req.status(404).json({error:"No resource found for the user."});
 			}
@@ -88,7 +87,7 @@ exports.project_remove = function(req, res, next){
     } else if(project) {
 
 	        // Remove the document.
-	        project.remove(function (error, project) {
+	        project.remove(function (error) {
 	            if (error) {
 	                res.status(500).send({error:error});
 	            }

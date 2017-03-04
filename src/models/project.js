@@ -28,13 +28,4 @@ projectSchema
 projectSchema.set('toJSON', { getters: true, virtuals: true });
 projectSchema.set('toObject', { getters: true, virtuals: true });
 
-
-projectSchema.methods.getAllProjects = function(cb){
-	return this.model("Project").find({},cb);
-};
-
-projectSchema.methods.getProjectDetails = function(id, cb){
-	return this.model("Project").find({"_id":new ObjectID(id)},cb);
-};
-
 export default mongoose.model('Project', projectSchema);

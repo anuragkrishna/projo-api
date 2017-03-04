@@ -49,19 +49,19 @@ router.delete('/project/:id', authenticate, project_controller.project_remove);
 //Note Details//
 
 //Get Note list.
-//router.get('/notes', note_controller.note_list);
-
-//Get Note list for a project.
-router.get('/project/:id/notes', note_controller.note_list);
+router.get('/notes', authenticate, note_controller.note_list);
 
 //Get Note Detail.
-router.get('/note/:id', note_controller.note_detail);
+router.get('/note/:id', authenticate, note_controller.note_detail);
 
-//Create Note.
-router.post('/project/:id', note_controller.note_create);
+//Create Project.
+router.post('/note', authenticate, note_controller.note_create);
+
+//Update Note.
+router.put('/note/:id', authenticate, note_controller.note_update);
 
 //delete Note.
-router.delete('/note/:id', note_controller.note_remove);
+router.delete('/note/:id', authenticate, note_controller.note_remove);
 
 
 

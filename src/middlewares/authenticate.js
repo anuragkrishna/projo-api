@@ -28,7 +28,6 @@ export default (req, res, next) => {
 						});
 					}else{
 						req.currentUser = user;
-						console.log("Setting current user", user);
 						next();
 					}
 				});

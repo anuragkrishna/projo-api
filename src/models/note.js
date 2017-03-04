@@ -6,7 +6,9 @@ let ObjectID = mongoose.Types.ObjectId;
 let Schema = mongoose.Schema;
 
 let noteSchema = Schema({
+						 title: {type:String, required:true, max:50},	
 						 content:{type: String, required: true, max: 500},
+						 owner: {type: Schema.ObjectId, required: true, ref:'User'},
 						 created_on: {type:Date, default: Date.now }
 });
 
@@ -15,13 +17,5 @@ noteSchema
 .get(function () {
   return 'api/note/'+this._id;
 });
-
-noteSchema.methods.getAllNotes = function(cb){
-	return this.model('Note').find({},cb);
-};
-
-noteSchema.methods.getNoteDetails = function(id, cb){
-	return this.model('Note').find({'_id':new ObjectID(id)},cb);
-};
 
 export default mongoose.model('Note', noteSchema);
