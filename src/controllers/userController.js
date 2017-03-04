@@ -9,19 +9,7 @@ import {validateSignup} from '../validations/user_validations';
 
 //Resources for user home page
 exports.index = function (req, res, next){
-	
-	async.parallel ({
-		projects: function (callback) {
-			Project.find({}, callback);
-		},
-		notes: function (callback) {
-			Note.find({}, callback);
-		},
-	},
-	
-	function(err, results){
-		res.render('index', {title: 'Projo Home Page', error:err, data: results});
-	});
+	res.send("Welcome to Projo!");
 };
 
 
@@ -69,8 +57,8 @@ exports.user_create = function (req, res, next){
 							}
 					});
 			    }
-			});
-	};
+		});
+};
 	
 
 //Get details of a specific user
