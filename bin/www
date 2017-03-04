@@ -33,7 +33,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 //DB Connection
-let mongoDBUrl= 'mongodb://anurag:projo@ds145289.mlab.com:45289/projodb';
+let mongoDBUrl='mongodb://anurag:projo@ds145289.mlab.com:45289/projodb';
 mongoose.connect(mongoDBUrl);
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
