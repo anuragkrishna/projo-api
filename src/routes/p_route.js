@@ -8,6 +8,8 @@ import project_controller from '../controllers/projectController';
 import note_controller from '../controllers/noteController';
 import report_controller from '../controllers/reportController';
 
+import authenticate from '../middlewares/authenticate';
+
 
 //User Routes//
 
@@ -28,19 +30,19 @@ router.delete('/user/:id',  user_controller.user_remove);
 //Project Details//
 
 //Get project Detail.
-router.get('/projects', project_controller.project_list);
+router.get('/projects', authenticate, project_controller.project_list);
 
 //Get project Detail.
-router.get('/project/:id', project_controller.project_detail);
+router.get('/project/:id', authenticate, project_controller.project_detail);
 
 //Create Project.
-router.post('/project', project_controller.project_create);
+router.post('/project', authenticate, project_controller.project_create);
 
 //Update Project details.
-router.put('/project/:id', project_controller.project_update);
+router.put('/project/:id', authenticate, project_controller.project_update);
 
 //deleteete Project.
-router.delete('/project/:id', project_controller.project_remove);
+router.delete('/project/:id', authenticate, project_controller.project_remove);
 
 
 

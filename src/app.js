@@ -8,6 +8,8 @@ import bodyParser from 'body-parser';
 import index from './routes/index';
 import users from './routes/users';
 import p_route from './routes/p_route';
+import auth from './routes/auth';
+
 
 var app = express();
 app.use(bodyParser.json());
@@ -21,5 +23,6 @@ app.use(function(req, res, next) {
 
 app.use('/', index);
 app.use('/api', p_route);
+app.use('/api/auth', auth);
 
 export default app;

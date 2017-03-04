@@ -5,12 +5,13 @@ let ObjectID = mongoose.Types.ObjectId;
 
 let Schema = mongoose.Schema;
 
-const enum_Status = ['Running', 'Finished', 'Blocked'];
+let enum_Status = ['Running', 'Finished', 'Blocked'];
 
 let projectSchema = Schema({
 						 title: {type: String, required: true, max: 200},
-						 description: {type: String, max: 1000},
+						 donor: {type: String, max: 100},
 						 status: {type: String, required: true, enum: enum_Status},
+						 owner: {type: Schema.ObjectId, required: true, ref:'User'},
  						 notes: [{type: Schema.ObjectId, ref: 'Note'}],
 						 reports: [{type: Schema.ObjectId, ref: 'Report'}],
 						 members: [{type: Schema.ObjectId, ref: 'User'}],
