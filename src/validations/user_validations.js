@@ -69,17 +69,15 @@ export const validateSignup = (data) => {
 		errors.passwordConfirmation = "Passwords must match.";
 	}
 
+	if(!Validator.isEmpty(data.role)){
 
-	if(!Validator.isAlpha(data.role)){
-		errors.role = "Only Alphabets allowed.";	
-	}
+		if(!Validator.isAlpha(data.role)){
+			errors.role = "Only Alphabets allowed.";
+		}
 
-	if(!Validator.isAlpha(data.role)){
-		errors.role = "Only Alphabets allowed.";
-	}
-
-	if(!Validator.isLength(data.role, { min:0, max:20})){
-		errors.role = "Limit: 20 characters.";
+		if(!Validator.isLength(data.role, { min:0, max:20})){
+			errors.role = "Limit: 20 characters.";
+		}	
 	}	
 
 	return {

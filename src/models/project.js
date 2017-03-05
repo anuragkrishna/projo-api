@@ -8,8 +8,8 @@ let Schema = mongoose.Schema;
 let enum_Status = ['Running', 'Finished', 'Blocked'];
 
 let projectSchema = Schema({
-						 title: {type: String, required: true, max: 200},
-						 donor: {type: String, max: 100},
+						 title: {type: String, required: true, max: 50},
+						 donor: {type: String, max: 50},
 						 status: {type: String, required: true, enum: enum_Status},
 						 owner: {type: Schema.ObjectId, required: true, ref:'User'},
  						 notes: [{type: Schema.ObjectId, ref: 'Note'}],

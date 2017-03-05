@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */
 
 import Note from '../models/Note';
+import validateNote from '../validations/note_validations'; 
+import isEmpty from 'lodash/isEmpty';
 
 //Get all the Notes for a user.
 exports.note_list = function (req, res, next){

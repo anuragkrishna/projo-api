@@ -18,4 +18,7 @@ noteSchema
   return 'api/note/'+this._id;
 });
 
+noteSchema.set('toJSON', { getters: true, virtuals: true });
+noteSchema.set('toObject', { getters: true, virtuals: true });
+
 export default mongoose.model('Note', noteSchema);

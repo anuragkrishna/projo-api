@@ -49,7 +49,6 @@ exports.user_create = function (req, res, next){
 
 				let newUser = new User({first_name:first_name, username: username, last_name:last_name, email:email, password_digest:password_digest, role:role, doj:doj});
 				newUser.save(err => {
-							console.log(err);
 							if(err){
 								res.status(500).json({errors});
 							}else{
@@ -63,8 +62,14 @@ exports.user_create = function (req, res, next){
 
 //Get details of a specific user
 exports.user_details = function (req, res, next){
-	res.send("Welcome to user_details!");
-}
+
+	let identifier = req.params.id;
+	User.findOne({$or : [{username:identifier}, {email:identifier}]})
+		.exec()
+		.then(user => {
+			res.json({user});
+		});
+};
 
 //Update user details
 exports.user_update = function (req, res, next){
