@@ -6,7 +6,7 @@
  * Module dependencies.
  */
 
-import  app from '../src/app';
+import app from '../src/app';
 let debug = require('debug')('projo:server');
 import http from 'http';
 import mongoose from 'mongoose';
