@@ -33,8 +33,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 //DB Connection
-let mongoDBUrl='mongodb://anurag:projo@ds145289.mlab.com:45289/projodb';
-mongoose.connect(mongoDBUrl);
+mongoose.connect(process.env.npm_config_DB_URL);
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -98,3 +97,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+export default app;
