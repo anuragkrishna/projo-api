@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-import Note from '../models/Note';
+import Note from '../models/note';
 import validateNote from '../validations/note_validations'; 
 import isEmpty from 'lodash/isEmpty';
 
