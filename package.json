@@ -2,8 +2,7 @@
   "name": "projo",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    
+  "scripts": {    
     "build": "babel src -d dist/src --presets es2015,stage-2 && babel bin/www -d dist --presets es2015,stage-2",
     "prebuild": "npm run test",
 
