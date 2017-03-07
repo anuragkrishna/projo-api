@@ -32,8 +32,11 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+console.log("MONGOLAB_URI using process.env", process.env.MONGOLAB_URI);
+console.log("MONGOLAB_URI",MONGOLAB_URI);
+
 //DB Connection
-mongoose.connect(process.env.npm_config_DB_URL);
+mongoose.connect(process.env.MONGOLAB_URI);
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
