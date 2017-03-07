@@ -6,8 +6,6 @@ import isEmpty from 'lodash/isEmpty';
 
 //Get all the projects for a user.
 exports.project_list = function (req, res, next){
-
-		console.log("project_list", req.body);
 		
 		const owner_id = req.currentUser.id;
 
