@@ -69,41 +69,27 @@ exports.project_update = function(req, res, next){
 
 	const id = req.params.id;
 	const owner_id = req.currentUser.id;
+	
+	Project.findOne({'_id':id, 'owner':owner_id}, (error,project) => {
 
-	Project.findOne({'title':req.body.title, 'owner':owner_id}, (error, project) =>{
-			if(project){
-				errors.title = "There is a project with such title.";
-			}
-			
-			let isValid = isEmpty(errors);	
+		// Handle any possible database errors
+		if (error) {
+		    res.status(505).send({error: error});
+		}else if(project) {
+		        	project.title = req.body.title || project.title;
+				    project.description = req.body.description || project.description;
+				    project.status = req.body.status || project.status;
+				    project.started_on = req.body.started_on || project.started_on;
 
-			if(!isValid) {
-				res.status(400).json({errors});
-
-				//If no validation errors
-			}else{	
-				Project.findOne({'_id':id, 'owner':owner_id}, (error,project) => {
-
-			    // Handle any possible database errors
-			    if (error) {
-			        res.status(505).send({error: error});
-			    } else if(project) {
-				        project.title = req.body.title || project.title;
-				        project.description = req.body.description || project.description;
-				        project.status = req.body.status || project.status;
-				        project.started_on = req.body.started_on || project.started_on;
-
-				        // Save the updated document back to the database
-				        project.save(function (err, project) {
-				            if (err) {
-				                res.status(500).send(err);
-				            }
-				            res.send(project);
-				        });
-			    } else {
-			    	 res.json(404, 'Project with given id not found.');
-			    }
-			  });
+				    // Save the updated document back to the database
+				    project.save(function (err, project) {
+				     		if (err) {
+					            res.status(500).send(err);
+					        }
+					        res.send(project);
+					        });
+		}else {
+			res.json(404, 'Project with given id not found.');
 			}
 		});	
 };
