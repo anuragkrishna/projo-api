@@ -23,7 +23,7 @@ exports.project_list = function (req, res, next){
 //Get details of a particular project.
 exports.project_detail = function (req, res, next){
 
-		const identifier = req.params.identifier;
+		const id = req.params.id;
 		const owner_id = req.currentUser.id;
 		Project.findOne({'_id':id, 'owner':owner_id}, (error,project) => {
 				if(project) res.send(project);
