@@ -77,7 +77,7 @@ exports.project_update = function(req, res, next){
 		    res.status(505).send({error: error});
 		}else if(project) {
 		        	project.title = req.body.title || project.title;
-				    project.description = req.body.description || project.description;
+				    project.donor = req.body.donor || project.donor;
 				    project.status = req.body.status || project.status;
 				    project.started_on = req.body.started_on || project.started_on;
 
