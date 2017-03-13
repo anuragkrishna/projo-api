@@ -7,7 +7,7 @@ let Schema = mongoose.Schema;
 
 let noteSchema = Schema({
 						 title: {type:String, required:true, max:50},	
-						 content:{type: String, required: true, max: 500},
+						 content:{type: String, required: true, max: 1000},
 						 owner: {type: Schema.ObjectId, required: true, ref:'User'},
 						 created_on: {type:Date, default: Date.now }
 });

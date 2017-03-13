@@ -14,8 +14,8 @@ export default function validateNote(data) {
 
   if (Validator.isEmpty(data.content)) {
       errors.content = 'This field is required';
-  }else if(!Validator.isLength(data.content, { min:0, max:500})){
-      errors.content = 'Limit: 500 characters.';
+  }else if(!Validator.isLength(data.content, { min:0, max:1000})){
+      errors.content = 'Limit: 1000 characters.';
   }
 
   return {

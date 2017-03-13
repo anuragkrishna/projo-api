@@ -33,7 +33,11 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 //DB Connection
-mongoose.connect(process.env.MONGOLAB_URI);
+
+let dbURI = ""
+dbURI = typeof(process.env.npm_config_MONGOLAB_URI) !== 'undefined' ? process.env.npm_config_MONGOLAB_URI : process.env.MONGOLAB_URI;
+
+mongoose.connect(dbURI);
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
