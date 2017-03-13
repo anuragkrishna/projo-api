@@ -81,15 +81,13 @@ exports.note_remove = function(req, res, next){
 
 	Note.findOne({'_id':id, 'owner':owner_id}, (error,note) => {
 
-	console.log("note", note);	
-	console.log("error", error);	
     // Handle any possible database errors
     if (error) {
         res.status(500).send({error:error});
     } else if(note) {
 
 	        // Remove the document.
-	        Note.remove(function (error) {
+	        note.remove(function (error) {
 	            if (error) {
 	                res.status(500).send({error:error});
 	            }
